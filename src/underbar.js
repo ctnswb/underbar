@@ -362,20 +362,10 @@ _.reduce = function(collection, iterator, accumulator) {
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
-
-    var d = new Date();
-    var startTime = d.getTime();
-    var endTime = startTime + wait;
-    var current = new Date().getTime();
-    while (current < endTime) {
-      current = new Date().getTime;
-    }
-
-    var args = Array.prototype.slice.call(arguments);
-    var f = args.shift();
-    var w = args.shift();
-    func.apply(null, args.concat(args));
-    func();
+    var args = arguments;
+    setTimeout(function(){
+        func(args[2], args[3]);
+    }, wait);
   };
 
 
